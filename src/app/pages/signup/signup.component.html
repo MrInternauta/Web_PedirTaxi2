@@ -1,0 +1,137 @@
+<h1>Registro</h1>
+
+<form (ngSubmit)="registrar(email, password, nombres, apellidos, telefono, tipo, estado, terminos )">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Correo</label>
+      <input type="email"  [(ngModel)]="email" name="email"  class="form-control" id="inputEmail4" placeholder="Correo">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Contraseña</label>
+      <input type="password"  [(ngModel)]="password" name="password" class="form-control" id="inputPassword4" placeholder="Contraseña">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputName">Nombres</label>
+    <input type="text"  [(ngModel)]="nombres" name="nombres" class="form-control" id="inputName" placeholder="Nombres">
+  </div>
+  <div class="form-group">
+    <label for="inputLast">Apelidos</label>
+    <input type="text"  [(ngModel)]="apellidos" name="apellidos" class="form-control" id="inputLast" placeholder="Apellidos">
+  </div>
+
+  <div class="form-group">
+    <label for="inputPhone">Telefono</label>
+    <input type="text"  [(ngModel)]="telefono" name="telefono" class="form-control" id="inputPhone" placeholder="921 212 2112">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputType">Tipo de usuario</label>
+      <select id="inputType" class="form-control"  [(ngModel)]="tipo" name="tipo" >
+        <option   selected value="pasajero">Pasajero</option>
+        <option value="conductor">Conductor</option>
+      </select>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputState">Estado</label>
+      <select name="estados" id="inputState" class="form-control"  [(ngModel)]="estado" name="estado">
+      
+        <option value="Todo México">Todo México</option>
+      
+        <option value="Aguascalientes">Aguascalientes</option>
+      
+        <option value="Baja California">Baja California</option>
+      
+        <option value="Baja California Sur">Baja California Sur</option>
+      
+        <option value="Campeche">Campeche</option>
+      
+        <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+      
+        <option value="Colima">Colima</option>
+      
+        <option value="Chiapas">Chiapas</option>
+      
+        <option value="Chihuahua">Chihuahua</option>
+      
+        <option value="Distrito Federal">Distrito Federal</option>
+      
+        <option value="Durango">Durango</option>
+      
+        <option value="Guanajuato">Guanajuato</option>
+      
+        <option value="Guerrero">Guerrero</option>
+      
+        <option value="Hidalgo">Hidalgo</option>
+      
+        <option value="Jalisco">Jalisco</option>
+      
+        <option value="México">México</option>
+      
+        <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
+      
+        <option value="Morelos">Morelos</option>
+      
+        <option value="Nayarit">Nayarit</option>
+      
+        <option value="Nuevo León">Nuevo León</option>
+      
+        <option value="Oaxaca">Oaxaca</option>
+      
+        <option value="Puebla">Puebla</option>
+      
+        <option value="Querétaro">Querétaro</option>
+      
+        <option value="Quintana Roo">Quintana Roo</option>
+      
+        <option value="San Luis Potosí">San Luis Potosí</option>
+      
+        <option value="Sinaloa">Sinaloa</option>
+      
+        <option value="Sonora">Sonora</option>
+      
+        <option value="Tabasco">Tabasco</option>
+      
+        <option value="Tamaulipas">Tamaulipas</option>
+      
+        <option value="Tlaxcala">Tlaxcala</option>
+      
+        <option value="Veracruz de Ignacio de la Llave">Veracruz de Ignacio de la Llave</option>
+      
+        <option value="Yucatán">Yucatán</option>
+      
+        <option value="Zacatecas">Zacatecas</option>
+      
+      </select>
+    </div>
+
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input"  [(ngModel)]="terminos" name="terminos"  type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Acepto los terminos
+      </label>
+    </div>
+  </div>
+
+  <br>
+  <div class="alert alert-success"  *ngIf="!error && error !==''" role="alert">
+    Registrado correctamente
+  </div>
+  <div class="alert alert-danger" *ngIf="error" role="alert">
+   {{error}}
+  </div>
+  <br>
+
+  <div class="form-group">
+      <button type="submit" class="btn btn-primary"
+         >Registrarse</button>
+
+  </div>
+  <br>
+  <br>
+</form>

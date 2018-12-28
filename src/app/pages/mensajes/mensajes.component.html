@@ -1,0 +1,104 @@
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"
+>
+<h3 class=" text-center">Mensajes</h3>
+<div class="messaging">
+    <div class="inbox_msg">
+        <div class="inbox_people">
+            <div class="headind_srch">
+                <div class="recent_heading">
+                    <h4>Conectados</h4>
+                    
+                </div>
+                <div class="srch_bar">
+                    <div class="stylish-input-group">
+                        <span class="input-group-addon">
+                        </span> </div>
+                </div>
+            </div>
+            <div class="inbox_chat">
+                <div  class="chat_list"  style="cursor: pointer;" (click)="seleccionar('')">
+                    <div class="chat_people" id="chat_people" >
+                
+                        <div class="chat_ib">
+                            <h5>Chat publico <span class="chat_date">General</span></h5>
+                            <p *ngIf="chat_select ===''">
+                                <b>Seleccionado</b>
+                            </p>
+                        </div>
+                
+                    </div>
+                
+                </div>
+                <div  class="chat_list"  *ngFor="let usuario of usuariosActivosObs | async" >
+                    <div class="chat_people"  (click)="seleccionar(usuario.nombre)"  style="cursor: pointer;">
+                        <div *ngIf="usuario.nombre !== ws.usuario._id">
+                            <div class="chat_img"> <img *ngIf="usuario.usuario.img" src="{{rest.url}}/imagen/usuarios/{{usuario.usuario.img}}?token={{rest.token}}" onerror="this.src='http://www.coordinadora.com/wp-content/uploads/sidebar_usuario-corporativo.png'" alt="sunil">
+                            <img *ngIf="!usuario.usuario.img" src="http://www.coordinadora.com/wp-content/uploads/sidebar_usuario-corporativo.png"  alt="sunil">
+                            </div>
+                            <div class="chat_ib">
+                                <h5>{{usuario.usuario.name}} {{usuario.usuario.lastname}} <span class="chat_date">{{usuario.sala}}</span></h5>
+                                <p>{{usuario.nombre}}</p>
+                                <p *ngIf="chat_select === usuario.nombre">
+                                    <b>Seleccionado</b>
+                                </p>
+                            </div>
+                
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        
+
+
+
+
+        <div class="mesgs">
+            <div class="msg_history" id="chat-mensajes">
+                <div *ngFor="let item of mensajes">
+                    <!-- && chat_select === '' -->
+                    <div >
+                        <div class="outgoing_msg" *ngIf="item.de._id === ws.usuario._id">
+                            <div class="sent_msg">
+                                <p>{{item.cuerpo }}</p>
+                                <span class="time_date"> {{ws.usuario.name}} {{ws.usuario.lastname}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+        <!-- && chat_select === item.de -->
+                    <div >
+                        <div class="incoming_msg" *ngIf="item.de._id !== ws.usuario._id ">
+                            <div class="incoming_msg_img"> 
+                            <img *ngIf="!item.de.img" src="http://www.coordinadora.com/wp-content/uploads/sidebar_usuario-corporativo.png"  alt="sunil">
+                                <img *ngIf="item.de.img" src="{{rest.url}}/imagen/usuarios/{{item.de.img}}?token={{rest.token}}" onerror="this.src='http://www.coordinadora.com/wp-content/uploads/sidebar_usuario-corporativo.png'" alt="sunil">
+                            </div>
+                            <div class="received_msg">
+                                <div class="received_withd_msg">
+                                    <p>{{item.cuerpo }}</p>
+                                    <span class="time_date">{{item.de.name}} {{item.de.lastname}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="alert alert-danger" role="alert" *ngIf="error">
+                    {{error}}
+                </div>
+        
+            </div>
+            <div class="type_msg">
+                <div class="input_msg_write">
+                    <form (ngSubmit)="enviar()">
+                        <input type="text" class="write_msg" [(ngModel)]="texto" name="texto" placeholder="Mensaje..."
+                            autofocus class="form-control chat-input">
+                    </form>
+                    <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" (click)="enviar()" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>

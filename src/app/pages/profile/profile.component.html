@@ -1,0 +1,150 @@
+
+
+<div class="container emp-profile" *ngIf="!editprofile">
+  <form method="post">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-img">
+        
+
+            <img *ngIf="!WS.usuario.img" src="http://www.coordinadora.com/wp-content/uploads/sidebar_usuario-corporativo.png" alt="sunil">
+            <img *ngIf="WS.usuario.img" src="{{rest.url}}/imagen/usuarios/{{WS.usuario.img}}?token={{rest.token}}" onerror="this.src='http://www.coordinadora.com/wp-content/uploads/sidebar_usuario-corporativo.png'"
+              alt="sunil">
+          <div class="file btn btn-lg btn-primary">
+            Cambiar foto
+            <input type="file" name="file" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="profile-head">
+          <h5>
+           {{ WS.usuario.name }} {{ WS.usuario.lastname }}
+          </h5>
+          <h6>
+          {{ WS.usuario.type.toUpperCase() }}
+          </h6>
+          <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true">Personales</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                aria-selected="false">Vehiculo</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Editar perfil" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-work">
+          <p>Ultimos viajes</p>
+          <a href="">Website Link</a><br />
+          <a href="">Bootsnipp Profile</a><br />
+          <a href="">Bootply Profile</a>
+       
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="tab-content profile-tab" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Id de Usuario</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{WS.usuario._id}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Nombre</label>
+              </div>
+              <div class="col-md-6">
+              <p>{{WS.usuario.name}} {{WS.usuario.lastname}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Correo</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{WS.usuario.email}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Telefono</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{WS.usuario.phone}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Tipo</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{WS.usuario.type.toUpperCase()}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Experience</label>
+              </div>
+              <div class="col-md-6">
+                <p>Expert</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Hourly Rate</label>
+              </div>
+              <div class="col-md-6">
+                <p>10$/hr</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Total Projects</label>
+              </div>
+              <div class="col-md-6">
+                <p>230</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>English Level</label>
+              </div>
+              <div class="col-md-6">
+                <p>Expert</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Availability</label>
+              </div>
+              <div class="col-md-6">
+                <p>6 months</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <label>Your Bio</label><br />
+                <p>Your detail description</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

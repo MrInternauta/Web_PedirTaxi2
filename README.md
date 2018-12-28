@@ -1,6 +1,6 @@
 # Basico
 ##Backend
-https://github.com/MrInternauta/rest-server-typescript
+https://github.com/MrInternauta/NodeJs-REST-SERVER
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
 
 ## Development server
